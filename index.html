@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+     body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    form {
+      width: 50%;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Rayan support</h2>
+
+<form id="contactForm">
+  <div>
+    <label for="name">Full Name:</label>
+    <input type="text" id="name" required>
+    <span id="nameError" class="error"></span>
+  </div>
+  <div>
+    <label for="email">Valid Email:</label>
+    <input type="email" id="email" required>
+    <span id="emailError" class="error"></span>
+  </div>
+  <div>
+    <label for="message">Message:</label>
+    <textarea id="message" required></textarea>
+    <span id="messageError" class="error"></span>
+  </div>
+  <input type="submit" value="Submit">
+</form>
+
+<script>
+  document.getElementById('contactForm').addEventListener('input', function (event) {
+    if (event.target.tagName.toLowerCase() !== 'input' && event.target.tagName.toLowerCase() !== 'textarea') return;
+  
+    switch (event.target.id) {
+      case 'email':
+        document.getElementById('emailError').textContent = event.target.validity.valid ? '' : 'email must be valid';
+    }
+  });
+</script>
+
+</body>
+</html>
